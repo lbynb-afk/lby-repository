@@ -27,10 +27,10 @@ public class UserController {
     }
 
     //查询
-    @GetMapping
+//    @GetMapping
 
     //修改
-    @PutMapping
+//    @PutMapping
     //删除
-    @DeleteMapping
+//    @DeleteMapping
 }

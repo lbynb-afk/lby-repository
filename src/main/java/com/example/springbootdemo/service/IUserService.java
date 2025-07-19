@@ -1,5 +1,6 @@
 package com.example.springbootdemo.service;
 
+import com.example.springbootdemo.pojo.User;
 import com.example.springbootdemo.pojo.dto.UserDto;
 
 /**
@@ -10,7 +11,9 @@ public interface IUserService {
 
     /**
      * 插入用户
+     *
      * @param user
+     * @return
      */
-    void add(UserDto user);
+    User add(UserDto user);
 }
