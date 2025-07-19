@@ -1,5 +1,7 @@
 package com.example.springbootdemo.controller;
 
+import com.example.springbootdemo.pojo.User;
+import com.example.springbootdemo.pojo.dto.ResponseMessage;
 import com.example.springbootdemo.pojo.dto.UserDto;
 import com.example.springbootdemo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,9 @@ public class UserController {
     //REST
     //增加
     @PostMapping    //localhost:8080/user   method:post
-    public String add(@RequestBody UserDto user){
-        userService.add(user);
-
-        return "success!";
+    public ResponseMessage add(@RequestBody UserDto user){
+        User userNew = userService.add(user);
+        return ResponseMessage.success(userNew);
 
     }
 
