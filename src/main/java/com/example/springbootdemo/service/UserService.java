@@ -29,4 +29,29 @@ public class UserService implements IUserService{
         return userRepository.save(userPojo);//参数必须是user类型
 
     }
+
+    @Override
+    public User getUser(Integer userId) {
+        return userRepository.findById(userId).orElseThrow(()->{
+            try {
+                throw new IllegalAccessException("用户不存在，参数异常！");
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    @Override
+    public User edit(UserDto user) {
+        User userPojo = new User();
+        BeanUtils.copyProperties(user,userPojo);
+        //调用数据访问层的方法
+        return userRepository.save(userPojo);//参数必须是user类型
+
+    }
+
+    @Override
+    public void delete(Integer userId) {
+        userRepository.deleteById(userId);
+    }
 }

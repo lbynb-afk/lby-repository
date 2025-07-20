@@ -5,6 +5,7 @@ import com.example.springbootdemo.pojo.dto.ResponseMessage;
 import com.example.springbootdemo.pojo.dto.UserDto;
 import com.example.springbootdemo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,17 +22,31 @@ public class UserController {
     //REST
     //增加
     @PostMapping    //localhost:8080/user   method:post
-    public ResponseMessage add(@RequestBody UserDto user){
+    public ResponseMessage add(@Validated @RequestBody UserDto user){
         User userNew = userService.add(user);
         return ResponseMessage.success(userNew);
 
     }
 
     //查询
-//    @GetMapping
+    @GetMapping("/{userId}")
+    public ResponseMessage get(@PathVariable Integer userId){
+        User userNew = userService.getUser(userId);
+        return ResponseMessage.success(userNew);
+    }
 
     //修改
-//    @PutMapping
+    @PutMapping
+    @GetMapping
+    public ResponseMessage edit(@Validated @RequestBody UserDto user){
+        User userNew = userService.edit(user);
+        return ResponseMessage.success(userNew);
+    }
+
     //删除
-//    @DeleteMapping
+    @DeleteMapping("/{userId}")
+    public ResponseMessage delete(@PathVariable Integer userId){
+         userService.delete(userId);
+        return ResponseMessage.success();
+    }
 }

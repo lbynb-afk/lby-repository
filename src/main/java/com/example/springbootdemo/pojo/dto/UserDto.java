@@ -2,6 +2,9 @@ package com.example.springbootdemo.pojo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 /**
  * @author 32035
@@ -9,8 +12,14 @@ import jakarta.persistence.Column;
  */
 public class UserDto {
 
+    private Integer userId;
+
+    @NotBlank(message = "用户名不能为空")//去除空格
+    @NotEmpty
     private String userName;
+    @NotBlank(message = "密码不能为空")//去除空格
     private String password;
+    @Email(message = "email格式不正确")
     private String email;
 
     public String getUserName() {
@@ -35,6 +44,14 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override

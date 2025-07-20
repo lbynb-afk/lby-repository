@@ -16,4 +16,25 @@ public interface IUserService {
      * @return
      */
     User add(UserDto user);
+
+    /**
+     * 查询用户
+     * @param userId
+     * @return
+     */
+    User getUser(Integer userId);
+
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+    User edit(UserDto user);
+
+    /**
+     * 删除用户
+     *
+     * @param userId
+     */
+    void delete(Integer userId);
 }
